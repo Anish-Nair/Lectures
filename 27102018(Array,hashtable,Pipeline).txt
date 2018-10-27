@@ -1,0 +1,73 @@
+﻿Write-Host "This is Anish" -BackgroundColor Black
+Write-Output "This is Test" | Get-Member
+Read-Host
+$dinesh="Your name is dinesh"
+Write-Host $dinesh
+$name=Read-Host
+Write-Host "your $name"
+Read-Host -Prompt hieeee
+$nm=Read-Host -Prompt Firstname
+$lm=Read-Host -Prompt Lastname
+Write-Host "Your name is $nm $lm"
+
+[int]$fn=Read-Host -Prompt FirstNumber
+[int]$sn=Read-Host -Prompt SecondNumber
+write-host "Your addition is $($fn+$sn)"
+
+$ar=@(4,5,"Anish")
+$ar | Get-Member
+$ar.Count
+$ar.Contains(3)
+$ar[0]
+$ar[-1]
+$ar +=3
+$ar.Remove()
+Get-Member -InputObject $ar
+
+Hash table
+
+$ab=@{name="Anish";
+      lastnmae="Nair"}
+
+$ab | Get-Member
+$ab["lastnmae"]
+$ab.Values
+
+
+Pipeline
+
+Get-Help Stop-Process -ShowWindow
+Get-Process | Get-Member
+
+Get-Process | Where-Object {$_.id -gt 5000}
+
+Get-Process | Where-Object {$_.WS -gt 100mb}
+
+Get-ChildItem -Path C:\Windows -Directory
+
+Get-Item -Path C:\Windows | Get-Member | Out-File C:\ANISH1\PRPOERTY.TXT
+
+Get-Item -Path C:\Anish1\123.txt | Get-Member | OUT-FILE C:\Anish1\file.txt
+
+Get-ChildItem | select length,lastcreatontime | Get-Process
+
+Get-ChildItem | select mode,@{n="ID"; e={$_.length}} | Get-Process
+
+Get-Service | select DisplayName | Get-Service
+
+Get-Service | select DisplayName | Out-File C:\Anish1\service.txt
+
+ii C:\Anish1\service.txt
+
+Get-Service -DisplayName (Get-Content C:\Anish1\service.txt)
+
+Get-Content -Path C:\Anish1\service.txt
+
+Get-Item -Path C:
+
+Get-Service -DisplayName 'Background Intelligent Transfer Service'
+
+
+
+
+       
