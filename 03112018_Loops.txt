@@ -1,0 +1,74 @@
+﻿Get-Help about_for -ShowWindow
+$a=@(1,2,3,4,5)
+for($e=0;$e -le 4; $e=$e+1)
+{$a[$e]}
+
+$f=@("*","*","*","*")
+for($g=0;$g -le 4; $g=$g+1)
+{$f[$g]}
+
+for($h=4;$h -ge 1; $h--)
+{
+for($f=0;$f -lt $h;$f++)
+{write-host "*" -NoNewline}
+Write-Host "" 
+}
+
+
+for($h=4;$h -le 1; $h--)
+{
+for($f=0;$f -lt $h;$f++)
+{write-host "*" -NoNewline }
+Write-Host "" 
+}
+
+
+
+for($h=1;$h -le 10; $h++)
+{
+
+New-Item -ItemType File  "C:\Anish1\$h.txt"
+ 
+}
+
+$fil=Get-ChildItem -Path "C:\Anish1"
+foreach($file in $fil)
+{Remove-item -Path C:\Anish1\$file}
+
+While Loop
+
+while (Get-Process -Name notepad)
+{ kill -Name notepad}
+
+IF and else loop
+
+$dll=Get-ChildItem -Path "C:\Windows\System32\*.dll" 
+$comparedate= (get-date).AddYears(-3)
+foreach($file in $dll)
+{
+    if($file.CreationTime -lt $comparedate)
+    {Write-Host -ForegroundColor green "Files is older than 3 years"
+    $file.Name | Out-File -FilePath "C:\Anish1\com.txt" -Append}
+    else
+    {Write-Host -ForegroundColor red "Files is not older than 3 years"}  
+     
+}
+
+Get-Process | export-csv -Path "c:\anish1\proc.csv"
+$proc= Import-Csv -Path "C:\Anish1\proc.csv"
+$newstate=Get-Process
+foreach($new in $newstate)
+    {
+    If ($proc |?{$_.name -eq $new.name})
+    {Write-host "No Worry"}
+    else
+    {$new.name | Out-File "C:\Anish1\234.csv" -Append}   
+    }
+
+
+    To remove list from array
+
+    [system.collection.arraylist] $a= @(1,2,3,4,5)
+[System.Collections.ArrayList] $a = @(3,4,5,6)
+$a.Remove(3)
+$a
