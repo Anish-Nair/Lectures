@@ -1,0 +1,101 @@
+﻿Start-Transcript
+
+Set-Location D:\Anish
+Get-Service | export-csv
+help Export-csv -ShowWindow
+
+Get-Service | Export-Csv servuces.csv -Delimiter "|"
+
+help Get-HotFix -ShowWindow
+$Comp=Get-Content .\complist.txt
+Get-Process -ComputerName $Comp
+help Get-Process -ShowWindow
+help Get-Process -Full
+Get-Content .\complist.txt | Get-Process
+$comp.GetType()
+Get-Member -InputObject $Comp
+
+
+Task2- 5th Answer by Foreach loop
+
+foreach ($com in $Comp)
+{Get-Process -ComputerName $Com
+
+}
+
+
+foreach ($com in $Comp)
+{
+" Fetching details from $com" | out-file fd.txt -Append
+
+Get-Process -ComputerName $com | Out-File fd.txt -Append
+
+
+}
+Task2- 5th Answer by For loop
+
+$Comp=Get-Content .\complist.txt
+$start=0
+$end=$comp.Length
+for($start; $start -lt $end; $start++)
+{
+    "Fetching details from $($Comp[$start])"
+     Get-Process -ComputerName $comp[$start]
+
+}
+
+
+$start=65
+$end=91
+for($start ; $start -le $end; $start++)
+
+{write-host [char]65+$start}
+
+
+$start=65
+$end=90
+for($start ; $start -le $end; $start++)
+
+{write-host $([char]$start).ToString().ToLower()} 
+
+[char]65 | Get-Member
+$([char]65).ToString() |gm
+$([char]65).ToString().ToLower()
+
+$service=get-service
+foreach($svc in Get-Service)
+{Write-Host "The display name of $($svc.name) is $($svc.displayname) "}
+
+foreach($proc in Get-Process)
+{Write-Host "The id of process $($proc.name) is $($proc.id)"}
+
+Get-Process
+
+$userlist =Import-Csv -Path "D:\Anish\Userlist.csv"
+$userlist
+New-LocalUser -Name $($userlist.name) -Password $($userlist.password
+Get-Command *user*
+get-help New-LocalUser
+foreach ($usr in $userlist)
+{ 
+New-LocalUser -Name $usr.Name -Password (ConvertTo-SecureString $usr.Password -AsPlainText -Force)}
+
+
+$userlist | Get-Member
+
+help New-LocalUser -ShowWindow
+help ConvertTo-SecureString -ShowWindow
+
+Get-LocalUser
+
+$logfile = Get-Item -Path "D:\Anish\*.log"
+foreach ($log in $logfile)
+{ Remove-Item $log}
+
+
+for($a=0; $a -le 10; $a++)
+{New-Item -ItemType File -Path "D:\Anish\$a.log"
+}
+
+
+        
