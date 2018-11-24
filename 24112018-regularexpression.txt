@@ -1,0 +1,124 @@
+﻿
+
+
+
+$serv =Get-Service
+foreach($servi in $serv)
+{
+if($servi.starttype -eq "Automatic")
+{ write-host "This $($servi.name) is automatic"}
+elseif($servi.starttype -eq "Manual")
+{write-host "This $($servi.name) is Manual"}
+else{write-host "This $($servi.name) is Disabled"}
+}
+
+
+
+
+$serv =Get-Service
+foreach($servi in $serv)
+{
+if($servi.starttype -like "Automatic")
+{ $info = "This $($servi.name) is automatic"}
+elseif($servi.starttype -like "Manual")
+{$info = "This $($servi.name) is Manual"}
+else{$info = "This $($servi.name) is Disabled"}
+$info | Out-File "D:\Anish\starttype.txt" -Append
+}
+
+
+
+
+$s =Get-Service
+foreach($service in $s)
+{
+    switch ($service.starttype)
+    {
+        "Automatic" {$in = "This $($service.Name) is Automatic"}
+        "Manual" {$in = "This $($service.Name) is Manual"}
+        "Disabled" {$in = "This $($service.Name) is Disabled"}
+     
+           
+    
+    }
+
+$in |Out-File -FilePath "D:\Anish\swt.txt" -append
+
+}
+
+Get-Service | gm
+Get-Service |select starttype
+get-help about_Regular* -ShowWindow
+
+1 -match "[1-31]"
+42 -match "[1-31]"
+25 -match "^[1-30]$"  ---Not working
+"q" -match "^[a-p]$"
+12345 -match "^[1-2]"
+
+
+$xinput = Read-Host
+if($xinput -match "^[a-z]{3}\-[a-z]{2}\-[a-z]{1}$")
+{
+ Write-Host "It is correct"}
+ else
+ {write-host "It is wrong"}
+######################################## 
+ $PSVersionTable
+############################################
+ $xinput = Read-Host
+if($xinput -match "^[a-z]{3}-[a-z]{2}-[a-z]{1}$")
+{
+ Write-Host "It is correct"}
+ else
+ {write-host "It is wrong"}
+###############################################
+ $a=$true
+ while($a)
+ {Write-Host $a}
+ ####################################
+ $a=$true
+ while($a)
+ {Write-Host $a
+ $a = $false}
+
+ #########################################################
+It will promp until you will write the correct value
+
+ $b=$true
+ 
+while($b)
+{
+    $xinput = Read-Host "Enter the string"
+ If($xinput -match "^[a-z]{3}-[a-z]{2}-[a-z]{1}$")
+    {Write-Host "You are correct"
+     $b = $false}
+ 
+ else
+    {write-host "It is wrong"}
+
+ }
+ ########################################################
+
+ Creating Object
+
+ $azurevm =New-Object System.Object
+ $azurevm | Add-Member -MemberType NoteProperty -Name "files" -Value "MyVM"
+ $azurevm | Add-Member -MemberType NoteProperty -Name "status" -value "Running"
+
+ $azurevm | gm
+ 
+ $er="anish"
+ $er | gm
+
+
+ $users = New-Object System.Object
+ $users | Add-Member -MemberType NoteProperty -Name "Fname" -Value "Anish"
+ $users | Add-Member -MemberType NoteProperty -Name "Lname" -Value "Nair"
+ $users | Add-Member -MemberType ScriptMethod -Name "samaccountname" -Value {"$($($This.fname).substring(0,1))"+"$($this.lname)"}
+
+ $users.samaccountname()
+ $users | gm
+ $users.Fname
+
+ 
