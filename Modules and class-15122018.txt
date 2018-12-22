@@ -1,0 +1,103 @@
+﻿192.168.1.1 -match "\b((25[0-5] |2[0-4][0-9]|1[0-9][0-9]|[1-9?][0-9])\.{3} (25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9]?\b)"
+
+'a.a.a.' -match "([a]\.){3}" 
+'a...' -match "[a]\.{3}"
+
+==============================================
+
+Class anish
+{
+    [string] $firstname="abc"
+    [string] $lastname="def"
+    [string] getfullname() {Return 'Anish Nair'}
+    
+    }
+
+
+$objan=New-Object -TypeName anish
+$objan.
+$objan.firstname='anishn'
+$objan.firstname
+$objan.lastname='Nair'
+$objan.lastname
+$objan.getfullname('$objan.firstname')
+
+#######
+
+class calc
+{
+[int] $fname
+[int] $lastname
+[int] $Add() {return $this.fname + $this.lastname}
+[int] $subtraction() {return $this.fname - $this.lastname} 
+}
+
+
+Modules
+$env:PSModulePath
+
+Find-Module --- This is finding the module from powershell gallery 
+Get-Module -- This will check the module installed in you system
+Get-Module -ListAvailable
+Find-module *user* ==This is finding modules from powershell gallery  related to user
+
+Install-PackageProvider nuget  == This for powershehh 3.0
+
+Install-module -Name xUser
+Get-Command -Module pester
+Update-Module -Name xuser
+Get-Module -ListAvailable | Update-module ------ This will update all the modulr
+Save-Module -Name xuser -path D:\Anish  == This we are storing the module from internet and saving it
+Save-Module -Name randomuser -path D:\Anish
+Import-Module -Name randomuser
+====================================
+Scope
+help about_Scopes -ShowWindow
+New-Variable -name myvar -value 10 -Scope local
+
+You have to study
+======================
+JOB
+Get-Command -noun job
+
+Start-Job -ScriptBlock {Get-Process}
+Get-Job
+Get-Job -Name Job3 | fl *
+Get-Job
+Receive-Job -Name Job4 -Keep
+Receive-Job
+Receive-Job -Name Job4
+
+
+Start-Job -name 20second -ScriptBlock {Get-Service
+
+Write-Host "This is 20 second job"
+
+Start-Sleep 20}
+
+Start-Job -name 60second -ScriptBlock {Get-process
+
+Write-Host "This is 60 second job"
+
+Start-Sleep 60}
+
+Get-Job -name "Job2" | Wait-Job
+
+$jobvar1 = Get-Job -name '20second'| Receive-Job
+$jobvar2 = Get-Job -name '60second'| Receive-Job
+
+$jobvar2
+
+
+Start-job 
+
+get-job
+
+
+Start-Job -name Err -ScriptBlock {Get-Service1}
+get-job -Name err
+$135=Get-Job -Name err
+$135
+$135.ChildJobs[1].JobStateInfo.Reason| Out-File -FilePath D:\Anish\err.txt
+
+
